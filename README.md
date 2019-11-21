@@ -1,4 +1,4 @@
-# wildlife-tracker
+# wildlife-tracker [![CircleCI](https://circleci.com/gh/ibrahnerd7/wildlife-tracker.svg?style=svg)](https://circleci.com/gh/ibrahnerd7/wildlife-tracker)
 A wildlife tracking website
 
 This repository contains code for Wildlife  tracking website project.The current version is 1.0
