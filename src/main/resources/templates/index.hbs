@@ -1,0 +1,46 @@
+{{#partial "content" }}
+    <div class="page-header mt-5">
+        <h4 class="text-white">Welcome to Hero Squad. Create a squad and populate it with heroes. A hero can only be in one squad. </h4>
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h5>Heroes</h5>
+            </div>
+            {{#if heroes}}
+                {{#each heroes}}
+                    <div class="card-text">
+
+                        <h6><b>{{name}}</b></h6>
+                        <p>.{{age}}  years</p>
+                        <p>Strength:<span>{{strength}}</span></p>
+                        <p>Weakness:<span>{{weakness}}</span></p>
+                        <hr>
+                    </div>
+                {{/each}}
+            {{else}}
+                <p>No Heroes Yet</p>
+
+            {{/if}}
+        </div>
+        <div class="card ml-4">
+            <div class="card-header">
+                <h5>Squads</h5>
+            </div>
+            {{#if squads}}
+                {{#each squads}}
+                    <h6><b>{{name}}</b></h6>
+                    <p><b>Cause:</b><span>{{cause}}</span></p>
+                    <p><b>Max Size:</b><span>{{maxSize}}</span></p>
+                    <p><a href="/squads/{{id}}">View All Members</a></p>
+                    <hr>
+                {{/each}}
+            {{else}}
+                <p>No Squads Yet</p>
+            {{/if}}
+        </div>
+    </div>
+    </div>
+{{/partial}}
+
+{{>layout.hbs}}

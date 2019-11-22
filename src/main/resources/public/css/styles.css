@@ -1,0 +1,27 @@
+body{
+font-family: 'Open Sans', sans-serif;
+background-image:url("https://bnetcmsus-a.akamaihd.net/cms/gallery/SC0E8AJNYUP91539707948604.jpg");
+background-repeat:no-repeat;
+background-size:cover;
+}
+
+.card{
+width:25rem;
+border-radius:0px
+}
+
+label.error {
+   font-size: 11px;
+   color: red;
+}
+
+#go-back{
+color:white;
+}
+#go-back:hover{
+text-decoration:none;
+}
+
+.col-md-12-c{
+background-color:black;
+}
