@@ -1,7 +1,6 @@
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -49,7 +48,6 @@ public class SightingTest {
         assertEquals(timestamp, testSighting.getSightingTime());
     }
 
-    //
     @Test
     public void equalsReturnsTrueIfAttributesAreEqual() {
         Timestamp timestamp = new Timestamp(new Date().getTime());
@@ -83,7 +81,6 @@ public class SightingTest {
         sightingOne.save();
         Sighting savedSighting = Sighting.all().get(0);
         assertEquals(sightingOne.getId(), savedSighting.getId());
-
     }
 
     @Test
@@ -99,6 +96,5 @@ public class SightingTest {
         Timestamp timestamp = new Timestamp(new Date().getTime());
         return new Sighting(1, "Zone A", "John Doe", timestamp);
     }
-
 
 }
