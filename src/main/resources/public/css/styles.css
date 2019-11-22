@@ -1,6 +1,6 @@
 body{
 font-family: 'Open Sans', sans-serif;
-background-image:url("https://bnetcmsus-a.akamaihd.net/cms/gallery/SC0E8AJNYUP91539707948604.jpg");
+background-image:url("https://img4.goodfon.com/wallpaper/nbig/f/7d/lev-zver-fon.jpg");
 background-repeat:no-repeat;
 background-size:cover;
 }
@@ -24,4 +24,22 @@ text-decoration:none;
 
 .col-md-12-c{
 background-color:black;
+}
+.horizontal-rule{
+height:4px;
+width:50%;
+background-color: #ed1543;
+}
+
+.nav-link:hover{
+color:yellow;
+}
+
+
+.mt-large{
+margin-top:13%;
+}
+
+.mt-small{
+margin-top:32px;
 }
