@@ -1,6 +1,7 @@
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -60,6 +61,17 @@ public class SightingTest {
         Sighting sighting = setUpNewSighting();
         sighting.save();
         assertTrue(Sighting.all().get(0).equals(sighting));
+    }
+
+    @Test
+    public void all_returnsAllInstancesOfSighting_true() {
+        Sighting sightingOne = setUpNewSighting();
+        sightingOne.save();
+        Timestamp timestamp = new Timestamp(new Date().getTime());
+        Sighting sightingTwo = new Sighting(2, "RiverSide", "Jane Doe", timestamp);
+        sightingTwo.save();
+        assertEquals(true, Sighting.all().get(0).equals(sightingOne));
+        assertEquals(true, Sighting.all().get(1).equals(sightingTwo));
     }
 
     private Sighting setUpNewSighting() {

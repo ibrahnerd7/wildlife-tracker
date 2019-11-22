@@ -1,6 +1,7 @@
 import org.sql2o.Connection;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 public class Sighting {
@@ -15,6 +16,14 @@ public class Sighting {
         this.sightingZone = sightingZone;
         this.rangerName = rangerName;
         this.sightingTime = sightingTime;
+    }
+
+    public static List<Sighting> all() {
+        String sql = "SELECT * FROM persons";
+        try (Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Sighting.class);
+
+        }
     }
 
     public int getWildlifeId() {
@@ -59,7 +68,6 @@ public class Sighting {
                     .addParameter("ranger_name", this.rangerName)
                     .addParameter("time", this.sightingTime)
                     .executeUpdate();
-
         }
     }
 }
