@@ -23,7 +23,7 @@ public class SightingTest {
     @Test
     public void SightingInstantiatesWithWildlifeId_True() {
         Timestamp timestamp = new Timestamp(new Date().getTime());
-        Sighting testSighting =  new Sighting(1, "Zone A", "John Doe", timestamp);
+        Sighting testSighting = new Sighting(1, "Zone A", "John Doe", timestamp);
         int testWildlifeId = 1;
         assertEquals(testWildlifeId, testSighting.getWildlifeId());
     }
@@ -48,19 +48,20 @@ public class SightingTest {
         Timestamp timestamp = new Timestamp(new Date().getTime());
         assertEquals(timestamp, testSighting.getSightingTime());
     }
-//
+
+    //
     @Test
     public void equalsReturnsTrueIfAttributesAreEqual() {
         Timestamp timestamp = new Timestamp(new Date().getTime());
         Sighting testSightingOne = setUpNewSighting();
-        Sighting testSightingTwo =new  Sighting(1, "Zone A", "John Doe", timestamp);
+        Sighting testSightingTwo = new Sighting(1, "Zone A", "John Doe", timestamp);
         assertTrue(testSightingOne.equals(testSightingTwo));
     }
 
     @Test
     public void save_insertsObjectIntoDatabase_Sighting() {
         Timestamp timestamp = new Timestamp(new Date().getTime());
-        Sighting testSighting =  new Sighting(1, "ZoneA", "JohnDoe", timestamp);
+        Sighting testSighting = new Sighting(1, "ZoneA", "JohnDoe", timestamp);
         testSighting.save();
         assertEquals(Sighting.all().get(0), testSighting);
     }
@@ -77,12 +78,21 @@ public class SightingTest {
     }
 
     @Test
-    public void save_assignsIdToSighting(){
+    public void save_assignsIdToSighting() {
         Sighting sightingOne = setUpNewSighting();
         sightingOne.save();
-        Sighting savedSighting=Sighting.all().get(0);
-        assertEquals(sightingOne.getId(),savedSighting.getId());
+        Sighting savedSighting = Sighting.all().get(0);
+        assertEquals(sightingOne.getId(), savedSighting.getId());
 
+    }
+
+    @Test
+    public void find_returnsSightingWithSameId_secondSighting() {
+        Sighting sighting = setUpNewSighting();
+        sighting.save();
+        Sighting secondSighting=setUpNewSighting();
+        secondSighting.save();
+        assertEquals(Sighting.find(secondSighting.getId()),secondSighting);
     }
 
     private Sighting setUpNewSighting() {
