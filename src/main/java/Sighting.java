@@ -5,21 +5,21 @@ import java.util.List;
 import java.util.Objects;
 
 public class Sighting {
-    private int wildlifeId;
-    private String sightingZone;
-    private String rangerName;
-    private Timestamp sightingTime;
+    private int wild_life_id;
+    private String zone;
+    private String ranger_name;
+    private Timestamp time;
     private int id;
 
     public Sighting(int wildlifeId, String sightingZone, String rangerName, Timestamp sightingTime) {
-        this.wildlifeId = wildlifeId;
-        this.sightingZone = sightingZone;
-        this.rangerName = rangerName;
-        this.sightingTime = sightingTime;
+        this.wild_life_id = wildlifeId;
+        this.zone = sightingZone;
+        this.ranger_name = rangerName;
+        this.time = sightingTime;
     }
 
     public static List<Sighting> all() {
-        String sql = "SELECT * FROM persons";
+        String sql = "SELECT * FROM sightings";
         try (Connection con = DB.sql2o.open()) {
             return con.createQuery(sql).executeAndFetch(Sighting.class);
 
@@ -27,19 +27,19 @@ public class Sighting {
     }
 
     public int getWildlifeId() {
-        return wildlifeId;
+        return wild_life_id;
     }
 
     public String getSightingZone() {
-        return sightingZone;
+        return zone;
     }
 
     public String getRangerName() {
-        return rangerName;
+        return ranger_name;
     }
 
     public Timestamp getSightingTime() {
-        return sightingTime;
+        return time;
     }
 
     @Override
@@ -47,27 +47,32 @@ public class Sighting {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sighting sighting = (Sighting) o;
-        return wildlifeId == sighting.wildlifeId &&
-                Objects.equals(sightingZone, sighting.sightingZone) &&
-                Objects.equals(rangerName, sighting.rangerName) &&
-                Objects.equals(sightingTime, sighting.sightingTime);
+        return wild_life_id == sighting.wild_life_id &&
+                Objects.equals(zone, sighting.zone) &&
+                Objects.equals(ranger_name, sighting.ranger_name) &&
+                Objects.equals(time, sighting.time);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(wildlifeId, sightingZone, rangerName, sightingTime);
+        return Objects.hash(wild_life_id, zone, ranger_name, time);
     }
 
     public void save() {
+        System.out.println(this.wild_life_id);
         try (Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO persons(id,wild_life_id,zone,ranger_name,time) VALUES(:id,:sightingZone,rangerName,sightingTime)";
-            con.createQuery(sql)
-                    .addParameter("id", this.id)
-                    .addParameter("wild_life_id", this.wildlifeId)
-                    .addParameter("zone", this.sightingZone)
-                    .addParameter("ranger_name", this.rangerName)
-                    .addParameter("time", this.sightingTime)
-                    .executeUpdate();
+            String sql = "INSERT INTO sightings (wild_life_id,zone,ranger_name,time) VALUES(:wild_life_id,:zone,:ranger_name,:time)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("wild_life_id", this.getWildlifeId())
+                    .addParameter("zone", this.getSightingZone())
+                    .addParameter("ranger_name", this.getRangerName())
+                    .addParameter("time", this.getSightingTime())
+                    .executeUpdate()
+                    .getKey();
         }
+    }
+
+    public int getId() {
+        return id;
     }
 }
