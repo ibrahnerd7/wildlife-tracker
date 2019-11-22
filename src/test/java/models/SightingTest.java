@@ -18,11 +18,17 @@ public class SightingTest {
     }
 
     @Test
-    public void SightingInstantiatesWithWildlifeId_True(){
-        Sighting testSighting=setUpNewSighting();
-        int testWildlifeId=1;
-        assertEquals(testWildlifeId,testSighting.getWildlifeId());
+    public void SightingInstantiatesWithWildlifeId_True() {
+        Sighting testSighting = setUpNewSighting();
+        int testWildlifeId = 1;
+        assertEquals(testWildlifeId, testSighting.getWildlifeId());
+    }
 
+    @Test
+    public void SightingInstantiatesWithSightingZone_True() {
+        Sighting testSighting = setUpNewSighting();
+        String testSightingZone = "Zone A";
+         assertEquals(testSightingZone,testSighting.getSightingZone());
     }
 
     private Sighting setUpNewSighting() {
@@ -30,8 +36,6 @@ public class SightingTest {
         return new Sighting(1, "Zone A", "John Doe", timestamp);
 
     }
-
-
 
 
 }
