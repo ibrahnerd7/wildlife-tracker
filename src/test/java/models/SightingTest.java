@@ -2,6 +2,7 @@ package models;
 
 import org.junit.Test;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -38,12 +39,16 @@ public class SightingTest {
         assertEquals(testSightingZone, testSighting.getSightingZone());
     }
 
+    @Test
+    public void SightingInstantiatesWithTimestamp_True(){
+        Sighting testSighting=setUpNewSighting();
+        Timestamp timestamp=new Timestamp(new Date().getTime());
+        assertEquals(timestamp,testSighting.getSightingTime());
+    }
+
     private Sighting setUpNewSighting() {
         Timestamp timestamp = new Timestamp(new Date().getTime());
         return new Sighting(1, "Zone A", "John Doe", timestamp);
     }
-
-
-
 
 }
