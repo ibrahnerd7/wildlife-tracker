@@ -1,5 +1,5 @@
-package models;
-
+import models.Sighting;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.sql.Timestamp;
@@ -10,6 +10,9 @@ import static org.junit.Assert.assertTrue;
 
 
 public class SightingTest {
+    @Rule
+    public DatabaseRule databaseRule = new DatabaseRule();
+
     @Test
     public void SightingInstantiatesCorrectly_True() {
         Sighting testSighting = setUpNewSighting();
