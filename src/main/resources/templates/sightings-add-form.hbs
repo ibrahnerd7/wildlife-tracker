@@ -4,7 +4,7 @@
         <form action="/sightings/add" method="post" name="sightingsForm">
             <div class="form-group">
                 <label for="wildlifeName">Wildlife Name</label>
-                <select name="wildlifeName" id="wildlifeName" class="form-control" >
+                <select name="wildlifeName" id="wildlifeName" class="form-control">
                     <option label="- Wildlife name -"></option>
                     <option value="Animal">Animal</option>
                     <option value="Endangered">Endangered</option>
@@ -12,7 +12,25 @@
             </div>
             <div class="form-group">
                 <label for="rangerName">Ranger Name</label>
-                <input type="text" name="rangerName" id="rangerName" class="form-control"  placeholder="- Ranger Name -">
+                <input type="text" name="rangerName" id="rangerName" class="form-control" placeholder="- Ranger Name -">
+            </div>
+            <div class="form-group">
+                <label for="health">Health</label>
+                <select name="health" id="health" class="form-control" disabled>
+                    <option label="-Endangered Animal Health -"></option>
+                    <option value="healthy">Healthy</option>
+                    <option value="ill">Ill</option>
+                    <option value="okay">Okay</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <select name="age" id="age" class="form-control" disabled>
+                    <option label="-Endangered Animal Age -"></option>
+                    <option value="newborn">Newborn</option>
+                    <option value="young">Young</option>
+                    <option value="adult">Adult</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="location">Location</label>
