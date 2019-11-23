@@ -52,6 +52,10 @@ margin-top:32px;
 background-color: #ed1543;
 border-color: #ed1543;
 }
+.btn-custom:hover{
+background-color: #ed1543;
+border-color: #ffffff;
+}
 
 .parallax {
 background-image:url("https://img4.goodfon.com/wallpaper/nbig/f/7d/lev-zver-fon.jpg");

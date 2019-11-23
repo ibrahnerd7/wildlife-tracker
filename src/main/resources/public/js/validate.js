@@ -9,8 +9,8 @@ $(document).ready(function() {
     messages:{
     wildlifeName:"Wildlife category must be specified",
     rangerName:"Please indicate the rangers name",
-    rangerName:"Location is required"
-    }
+    location:"Location is required"
+    },
      submitHandler: function(form) {
           form.submit();
         }
