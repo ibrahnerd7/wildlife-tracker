@@ -25,7 +25,7 @@ public class Animal extends Wildlife {
                     .getKey();
 
         }
-        System.out.println(this.id);
+//        System.out.println(this.id);
 
     }
 
