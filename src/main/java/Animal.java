@@ -13,14 +13,16 @@ public class Animal implements Wildlife {
     }
 
     public void save() {
-        System.out.println(this.name);
         try (Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO animals (name) VALUES(:name)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.getName())
                     .executeUpdate()
                     .getKey();
+
         }
+        System.out.println(this.id);
+
     }
 
 

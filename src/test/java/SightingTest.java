@@ -87,9 +87,24 @@ public class SightingTest {
     public void find_returnsSightingWithSameId_secondSighting() {
         Sighting sighting = setUpNewSighting();
         sighting.save();
-        Sighting secondSighting=setUpNewSighting();
+        Sighting secondSighting = setUpNewSighting();
         secondSighting.save();
-        assertEquals(Sighting.find(secondSighting.getId()),secondSighting);
+        assertEquals(Sighting.find(secondSighting.getId()), secondSighting);
+    }
+
+    //associate one wildlife to many sightings
+    @Test
+    public void save_savesWildlifeIntoDB_True() {
+        Animal animal = new Animal("Lion");
+        animal.save();
+
+        Timestamp timestamp = new Timestamp(new Date().getTime());
+        Sighting sighting = new Sighting(animal.getId(), "zone A", "Jacob", timestamp);
+        sighting.save();
+
+        Sighting sighting1=Sighting.find(sighting.getId());
+        assertEquals(sighting1.getWildlifeId(),animal.getId());
+
     }
 
     private Sighting setUpNewSighting() {

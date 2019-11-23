@@ -30,22 +30,26 @@ public class App {
             return new ModelAndView(model, "sightings-all.hbs");
         }, new HandlebarsTemplateEngine());
 
-//        post("/sightings/add", (request, response) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            String wildLifeName = request.queryParams("wildlifeName");
-//            Wildlife wildlife = new
-//            int wildlifeId = wildlife.getId();
-//            String zone = request.queryParams("location");
-//            String rangerName = request.queryParams("rangerName");
-//            String timeString = request.queryParams("time");
-//            Timestamp time = new Timestamp(new Date(timeString).getTime());
-//
-//            Sighting sighting = new Sighting(wildlifeId, zone, rangerName, time);
-//            sighting.save();
-//
-//            response.redirect("/");
-//
-//        });
+        post("/sightings/add", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String wildLifeName = request.queryParams("wildlifeName");
+            Animal animal = new Animal(wildLifeName);
+
+            animal.save();
+
+            int wildlifeId = animal.getId();
+            String zone = request.queryParams("location");
+            String rangerName = request.queryParams("rangerName");
+            String timeString = request.queryParams("time");
+            Timestamp time = new Timestamp(new Date().getTime());
+
+            Sighting sighting = new Sighting(wildlifeId, zone, rangerName, time);
+            sighting.save();
+
+            response.redirect("/");
+
+            return null;
+        }, new HandlebarsTemplateEngine());
 
 
     }

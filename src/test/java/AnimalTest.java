@@ -1,10 +1,8 @@
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.sql.Timestamp;
-import java.util.Date;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class AnimalTest {
     @Rule
@@ -69,7 +67,7 @@ public class AnimalTest {
         Animal testAnimalTwo = setUpNewAnimal();
 
         testAnimalTwo.save();
-        assertEquals(Animal.find(testAnimalTwo.getId()),testAnimalTwo);
+        assertEquals(Animal.find(testAnimalTwo.getId()), testAnimalTwo);
     }
 
 }
