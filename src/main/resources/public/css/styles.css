@@ -43,3 +43,8 @@ margin-top:13%;
 .mt-small{
 margin-top:32px;
 }
+
+.btn-custom{
+background-color: #ed1543;
+border-color: #ed1543;
+}
