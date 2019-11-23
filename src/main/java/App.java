@@ -21,5 +21,13 @@ public class App {
 
             return new ModelAndView(model, "sightings-add-form.hbs");
         }, new HandlebarsTemplateEngine());
+
+        get("/sightings", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            return new ModelAndView(model, "sightings-all.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
     }
 }

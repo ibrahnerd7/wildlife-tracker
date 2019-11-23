@@ -1,29 +1,19 @@
 $(document).ready(function() {
-  //hero form validation
-  $("form[name='heroesForm']").validate({
+  //sighting form validation
+  $("form[name='sightingsForm']").validate({
     rules: {
-      heroName: "required",
-      heroAge: {
-        required: true,
-        number: true
-      },
-      heroWeakness: "required",
-      heroStrength: "required",
-      squadName: "required"
+      wildlifeName: "required",
+      rangerName: "required",
+      location: "required",
+    },
+    messages:{
+    wildlifeName:"Wildlife category must be specified",
+    rangerName:"Please indicate the rangers name",
+    rangerName:"Location is required"
     }
+     submitHandler: function(form) {
+          form.submit();
+        }
   });
 
-  $("form[name='squadForm']").validate({
-    rules: {
-      squadName: "required",
-      squadMaxSize: {
-        required: true,
-        number: true
-      },
-      squadCause: "required"
-    },
-    submitHandler: function(form) {
-      form.submit();
-    }
-  });
 });

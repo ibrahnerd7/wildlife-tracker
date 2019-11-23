@@ -3,6 +3,10 @@ font-family: 'Open Sans', sans-serif;
 background-image:url("https://img4.goodfon.com/wallpaper/nbig/f/7d/lev-zver-fon.jpg");
 background-repeat:no-repeat;
 background-size:cover;
+width:100%;
+}
+.container-fluid{
+width:100%;
 }
 
 .card{
@@ -47,4 +51,14 @@ margin-top:32px;
 .btn-custom{
 background-color: #ed1543;
 border-color: #ed1543;
+}
+
+.parallax {
+background-image:url("https://img4.goodfon.com/wallpaper/nbig/f/7d/lev-zver-fon.jpg");
+
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }

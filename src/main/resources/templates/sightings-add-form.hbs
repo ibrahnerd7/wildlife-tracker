@@ -1,24 +1,28 @@
 {{#partial "content"}}
     <h3 class="mt-5 text-white">Add a Sighting</h3>
     <div class="card col-md-4 mt-4">
-        <form action="/heroes/add" method="post" name="heroesForm">
+        <form action="/sightings/add" method="post" name="sightingsForm">
             <div class="form-group">
-                <label for="heroName">Wildlife Name</label>
-                <input type="text" name="heroName" id="heroName" class="form-control">
+                <label for="wildlifeName">Wildlife Name</label>
+                <select name="wildlifeName" id="wildlifeName" class="form-control" >
+                    ---------------------
+                    <option value="Animal" selected>Animal</option>
+                    <option value="Endangered">Endangered</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="heroAge">Ranger Name</label>
-                <input type="number" name="heroAge" id="heroAge" class="form-control" min="1" max="100">
+                <label for="rangerName">Ranger Name</label>
+                <input type="text" name="rangerName" id="rangerName" class="form-control" min="1" max="100">
             </div>
             <div class="form-group">
-                <label for="heroWeakness">Location</label>
-                <select name="heroWeakness" id="heroWeakness" class="form-control">
-                    <option value="Women">Women</option>
-                    <option value="Ego">Ego</option>
-                    <option value="Alcoholism">Alcoholism</option>
-                    <option value="Fire">Fire</option>
-                    <option value="Radiation">Radiation</option>
-                    <option value="WitchCraft">WitchCraft</option>
+                <label for="location">Location</label>
+                <select name="location" id="location" class="form-control">
+                    <option value="By the riverside">By the riverside</option>
+                    <option value="East">East</option>
+                    <option value="West">West</option>
+                    <option value="At the Camp">At the Camp</option>
+                    <option value="In the Savannah">In the Savannah</option>
+                    <option value="Deep in the woods">Deep in the woods</option>
                 </select>
             </div>
             <button class="btn btn-success  mb-4 btn-custom" type="submit">Add Sighting</button>
