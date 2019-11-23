@@ -1,14 +1,22 @@
 {{#partial "content"}}
-    <p class="mt-large">Scroll Up and Down this page to see the parallax scrolling effect.</p>
+    <h4 class="mt-large text-white mb-5">Here goes Sightings from different rangers</h4>
 
     <div class="parallax"></div>
 
-    <div style="height:1000px;background-color:white;font-size:36px">
-        Scroll Up and Down this page to see the parallax scrolling effect.
-        This div is just here to enable scrolling.
-        Tip: Try to remove the background-attachment property to remove the scrolling effect.
-    </div>
+    {{#if sightings }}
+        <div class="row mt-5">
+            {{#each sightings}}
+                <div class="card text-center  ml-2" style="width:18rem;">
+                    <h3>{{rangerName}}</h3>
+                    <p>Ranger Badge Q</p>
+                    <button class="btn btn-success btn-custom "><a href="">View Sightings</a></button>
+                </div>
+            {{/each}}
+        </div>
 
+    {{else}}
+        <h1>No Sightings yet</h1>
+    {{/if}}
 {{/partial}}
 
 {{>layout.hbs}}

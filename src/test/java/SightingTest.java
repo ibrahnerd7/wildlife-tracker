@@ -53,7 +53,7 @@ public class SightingTest {
         Timestamp timestamp = new Timestamp(new Date().getTime());
         Sighting testSightingOne = setUpNewSighting();
         Sighting testSightingTwo = new Sighting(1, "Zone A", "John Doe", timestamp);
-        assertTrue(testSightingOne.equals(testSightingTwo));
+        assertEquals(testSightingOne, testSightingTwo);
     }
 
     @Test

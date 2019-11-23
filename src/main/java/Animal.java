@@ -1,22 +1,26 @@
 import interfaces.Wildlife;
 import org.sql2o.Connection;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class Animal implements Wildlife {
+public class Animal extends Wildlife {
     private int id;
     private String name;
+    public static final String DATABASE_TYPE = "animal";
 
     public Animal(String name) {
         this.name = name;
+        type = DATABASE_TYPE;
     }
 
     public void save() {
         try (Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name) VALUES(:name)";
+            String sql = "INSERT INTO animals (name,type) VALUES(:name,:type)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.getName())
+                    .addParameter("type", this.type)
                     .executeUpdate()
                     .getKey();
 
@@ -25,11 +29,30 @@ public class Animal implements Wildlife {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public static List<Animal> all() {
-        String sql = "SELECT * FROM animals";
+        String sql = "SELECT * FROM animals WHERE type='animal';";
         try (Connection con = DB.sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(Animal.class);
+            return con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Animal.class);
 
         }
     }
@@ -38,30 +61,12 @@ public class Animal implements Wildlife {
         try (Connection con = DB.sql2o.open()) {
             String sql = "SELECT * FROM animals WHERE id=:id";
             return con.createQuery(sql)
+                    .throwOnMappingFailure(false)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Animal.class);
         }
     }
 
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setId() {
-
-    }
-
-    @Override
-    public void setName() {
-
-    }
 
     @Override
     public boolean equals(Object o) {

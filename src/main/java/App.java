@@ -5,6 +5,7 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.*;
@@ -12,6 +13,8 @@ import static spark.Spark.*;
 public class App {
     public static void main(String[] args) {
         staticFileLocation("public");
+
+        port(8080);
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -26,7 +29,8 @@ public class App {
 
         get("/sightings", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-
+            List<Sighting> sightingList = Sighting.all();
+            model.put("sightings", sightingList);
             return new ModelAndView(model, "sightings-all.hbs");
         }, new HandlebarsTemplateEngine());
 

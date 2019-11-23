@@ -1,14 +1,38 @@
 package interfaces;
 
-public interface Wildlife {
+import java.util.Arrays;
+import java.util.List;
 
+public abstract class Wildlife {
 
-    int getId();
+    public int id;
+    public String name;
+    public String type;
+    static List<String> animalHealth = Arrays.asList("Healthy", "ill", "Okay");
+    static List<String> animalAge = Arrays.asList("Newborn", "Young", "Adult");
 
-    String getName();
+    public int getId() {
+        return id;
+    }
 
-    void setId();
+    public String getName() {
+        return name;
+    }
 
-    void setName();
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }
