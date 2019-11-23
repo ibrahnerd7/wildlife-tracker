@@ -44,7 +44,9 @@ public class Endagered extends Wildlife {
                     .executeAndFetch(Endagered.class);
 
         }
+
     }
+
 
     public static Endagered find(int id) {
         try (Connection con = DB.sql2o.open()) {

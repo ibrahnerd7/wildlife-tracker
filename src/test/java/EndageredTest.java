@@ -39,26 +39,24 @@ public class EndageredTest {
     }
 
     @Test
-    public void save_insertsObjectIntoDatabase_Animal() {
+    public void save_insertsObjectIntoDatabase_Endagered() {
         Endagered testEndagered = setUpNewEndagered();
         testEndagered.save();
-        System.out.println(testEndagered.getType());
-        System.out.println(Endagered.all().get(0).getType());
         assertEquals(Endagered.all().get(0), testEndagered);
     }
-//
-//
-//    @Test
-//    public void all_returnsAllInstancesOfEndagered_true() {
-//        Endagered testEndagered = setUpNewEndagered();
-//        testEndagered.save();
-//        Endagered testEndageredTwo = setUpNewEndagered();
-//
-//
-//        testEndagered.save();
-//        assertEquals(Endagered.all().get(0), testEndagered);
-//        assertEquals(Endagered.all().get(1), testEndageredTwo);
-//    }
+
+
+    @Test
+    public void all_returnsAllInstancesOfEndagered_true() {
+        Endagered testEndagered = setUpNewEndagered();
+        testEndagered.save();
+        Endagered testEndageredTwo = setUpNewEndagered();
+
+        testEndageredTwo.save();
+        System.out.println(Endagered.all().size());
+        assertEquals(Endagered.all().get(0), testEndagered);
+        assertEquals(Endagered.all().get(1), testEndageredTwo);
+    }
 //
 //    @Test
 //    public void save_assignsIdToAnimal() {
