@@ -65,15 +65,15 @@ public class EndageredTest {
         Endagered savedAnimal = Endagered.all().get(0);
         assertEquals(testEndagered.getId(), savedAnimal.getId());
     }
-//
-//    @Test
-//    public void find_returnsAnimalWithSameId_secondAnimal() {
-//        Endagered testEndagered = setUpNewEndagered();
-//        testEndagered.save();
-//        Endagered testEndageredTwo = setUpNewEndagered();
-//        testEndageredTwo.save();
-//        assertEquals(Endagered.find(testEndageredTwo.getId()), testEndageredTwo);
-//    }
+
+    @Test
+    public void find_returnsAnimalWithSameId_secondAnimal() {
+        Endagered testEndagered = setUpNewEndagered();
+        testEndagered.save();
+        Endagered testEndageredTwo = setUpNewEndagered();
+        testEndageredTwo.save();
+        assertEquals(Endagered.find(testEndageredTwo.getId()), testEndageredTwo);
+    }
 
 
 }

@@ -15,7 +15,7 @@ public class Endagered extends Wildlife {
     public Endagered(String age, String health,String name) {
         this.age = age;
         this.health = health;
-       type = DATABASE_TYPE;
+        type = DATABASE_TYPE;
         this.name=name;
 
     }
@@ -98,6 +98,11 @@ public class Endagered extends Wildlife {
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 
     @Override
