@@ -33,7 +33,7 @@ public class App {
 //        post("/sightings/add", (request, response) -> {
 //            Map<String, Object> model = new HashMap<>();
 //            String wildLifeName = request.queryParams("wildlifeName");
-//            Wildlife wildlife = (Wildlife) Wildlife.findByName(wildLifeName);
+//            Wildlife wildlife = new
 //            int wildlifeId = wildlife.getId();
 //            String zone = request.queryParams("location");
 //            String rangerName = request.queryParams("rangerName");
@@ -45,7 +45,7 @@ public class App {
 //
 //            response.redirect("/");
 //
-//        })
+//        });
 
 
     }
