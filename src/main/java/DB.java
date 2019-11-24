@@ -16,7 +16,7 @@ public class DB {
             if (System.getenv("DATABASE_URL") == null) {
                 dbUri = new URI("postgres://localhost:5432/wildlife_tracker");
             } else {
-                dbUri = new URI(System.getenv("DATABASE URL"));
+                dbUri = new URI(System.getenv("DATABASE_URL"));
             }
             int port = dbUri.getPort();
             String host = dbUri.getHost();
