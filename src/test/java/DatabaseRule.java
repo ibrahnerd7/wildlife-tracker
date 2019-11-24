@@ -5,7 +5,12 @@ import org.sql2o.Sql2o;
 public class DatabaseRule extends ExternalResource {
     @Override
     protected void before() throws Throwable {
-        DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/wildlife_tracker_test", "moringa", "Access");
+        try {
+            DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/wildlife_tracker_test", "moringa", "Access");
+        }
+        catch (Exception e){
+            System.out.println("Unable to connect to Database. Check your connection string");
+        }
     }
 
     @Override
