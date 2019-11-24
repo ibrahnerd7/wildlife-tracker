@@ -37,6 +37,12 @@ A user can view rangers and cicking on them view all sightings they have done
 
 ## Set up instructions
 - Clone the project open it in your favourite IDE favourably IntelliJ.
+- Set Up database
+ 
+1.   ```CREATE DATABASE wildlife_tracker;```
+2. ```CREATE TABLE sightings(id serial PRIMARY KEY,wild_life_id int,zone varchar, ranger_name varchar,time timestamp);```
+3. ```CREATE TABLE animals(id serial PRIMARY KEY,name varchar,type varchar, age varchar,health varchar);```
+
 - Run `gradle build` to build the project and install the dependencies. The build artifacts will be stored in the `build/` directory.
 - Hit the `run` button to continue .
 - Navigate to `http://localhost:4567/` in your browser.
