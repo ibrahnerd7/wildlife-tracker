@@ -1,7 +1,7 @@
 build/
 .gradle/
-.idea
+.idea/
 gradle/
-gradlew.bat
+gradlew*
 settings.gradle
 !gradle-wrapper.jar
