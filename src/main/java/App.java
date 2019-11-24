@@ -1,4 +1,3 @@
-import interfaces.Wildlife;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -24,7 +23,7 @@ public class App {
         get("/sightings/add", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
 
-            return new ModelAndView(model, "sightings-add-form.hbs");
+            return new ModelAndView(model, "animal-add-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/sightings", (request, response) -> {
@@ -36,19 +35,35 @@ public class App {
 
         post("/sightings/add", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            String wildLifeName = request.queryParams("wildlifeName");
-            Animal animal = new Animal(wildLifeName);
 
-            animal.save();
+            String age = request.queryParams("age");
+            String health = request.queryParams("health");
+            String andangeredName = request.queryParams("wildlifeName");
+            String animalName = request.queryParams("animalName");
 
-            int wildlifeId = animal.getId();
             String zone = request.queryParams("location");
-            String rangerName = request.queryParams("rangerName");
-            String timeString = request.queryParams("time");
-            Timestamp time = new Timestamp(new Date().getTime());
+            String endageredRangerName = request.queryParams("rangerName");
+            String animalRangerName = request.queryParams("animalRangerName");
 
-            Sighting sighting = new Sighting(wildlifeId, zone, rangerName, time);
-            sighting.save();
+            String timeString = request.queryParams("time");
+
+            //if age and health is null create an Animal object
+            if (age == null) {
+                Animal animal = new Animal(animalName);
+                animal.save();
+                int wildlifeId = animal.getId();
+                Timestamp time = new Timestamp(new Date().getTime());
+                Sighting sighting = new Sighting(wildlifeId, zone, animalRangerName, time);
+                sighting.save();
+            } else {
+                Endagered endagered = new Endagered(age, health, andangeredName);
+                int wildlifeId = endagered.getId();
+                endagered.save();
+                Timestamp time = new Timestamp(new Date().getTime());
+                Sighting sighting = new Sighting(wildlifeId, zone, endageredRangerName, time);
+                sighting.save();
+            }
+
 
             response.redirect("/");
 

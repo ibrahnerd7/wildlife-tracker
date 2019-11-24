@@ -80,6 +80,9 @@ public class Sighting {
                     .executeUpdate()
                     .getKey();
         }
+        if (zone.equals("")||ranger_name.equals("")) {
+            throw new UnsupportedOperationException("Please enter all details!");
+        }
     }
 
     public int getId() {
