@@ -2,6 +2,7 @@ import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +14,6 @@ public class App {
     public static void main(String[] args) {
         staticFileLocation("public");
 
-        port(8080);
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -37,6 +37,11 @@ public class App {
         get("/sightings", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Sighting> sightingList = Sighting.all();
+            for (Sighting sightingItem : sightingList) {
+                Date date = sightingItem.getSightingTime();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E, MMMM d 'at' hh:mm a");
+                simpleDateFormat.format(date);
+            }
             model.put("sightings", sightingList);
             return new ModelAndView(model, "sightings-all.hbs");
         }, new HandlebarsTemplateEngine());

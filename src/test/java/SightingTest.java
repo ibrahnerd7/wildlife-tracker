@@ -1,7 +1,9 @@
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
@@ -56,7 +58,7 @@ public class SightingTest {
         assertEquals(testSightingOne, testSightingTwo);
     }
 
-    @Test(expected =UnsupportedOperationException.class)
+    @Test(expected = UnsupportedOperationException.class)
     public void save_insertsObjectIntoDatabase_Sighting() {
         Timestamp timestamp = new Timestamp(new Date().getTime());
         Sighting testSighting = new Sighting(1, "ZoneA", "JohnDoe", timestamp);
@@ -102,13 +104,15 @@ public class SightingTest {
         Sighting sighting = new Sighting(animal.getId(), "zone A", "Jacob", timestamp);
         sighting.save();
 
-        Sighting sighting1=Sighting.find(sighting.getId());
-        assertEquals(sighting1.getWildlifeId(),animal.getId());
+        Sighting sighting1 = Sighting.find(sighting.getId());
+        assertEquals(sighting1.getWildlifeId(), animal.getId());
 
     }
 
     private Sighting setUpNewSighting() {
         Timestamp timestamp = new Timestamp(new Date().getTime());
+        Timestamp rightNow = new Timestamp(new Date().getTime());
+
         return new Sighting(1, "Zone A", "John Doe", timestamp);
     }
 

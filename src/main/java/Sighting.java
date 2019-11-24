@@ -36,6 +36,42 @@ public class Sighting {
         }
     }
 
+    public int getWild_life_id() {
+        return wild_life_id;
+    }
+
+    public void setWild_life_id(int wild_life_id) {
+        this.wild_life_id = wild_life_id;
+    }
+
+    public String getZone() {
+        return zone;
+    }
+
+    public void setZone(String zone) {
+        this.zone = zone;
+    }
+
+    public String getRanger_name() {
+        return ranger_name;
+    }
+
+    public void setRanger_name(String ranger_name) {
+        this.ranger_name = ranger_name;
+    }
+
+    public Timestamp getTime() {
+        return time;
+    }
+
+    public void setTime(Timestamp time) {
+        this.time = time;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getWildlifeId() {
         return wild_life_id;
     }
