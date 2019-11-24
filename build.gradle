@@ -1,8 +1,8 @@
 plugins {
     id 'java'
+    id 'application'
     id 'jacoco'
 }
-
 
 
 group 'wildlife-tracker'
@@ -30,3 +30,6 @@ jacocoTestReport {
         html.enabled false
     }
 }
+applicationName="ibrawildlife"
+mainClassName='App'
+task stage(dependsOn:['clean','installDist'])
