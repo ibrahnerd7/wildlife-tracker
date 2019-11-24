@@ -77,7 +77,6 @@ public class App {
                 sighting.save();
             }
 
-
             response.redirect("/");
 
             return null;

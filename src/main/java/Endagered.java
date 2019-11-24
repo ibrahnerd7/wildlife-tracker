@@ -32,7 +32,6 @@ public class Endagered extends Wildlife {
                     .getKey();
 
         }
-//        System.out.println(this.type);
 
     }
 
@@ -42,7 +41,6 @@ public class Endagered extends Wildlife {
             return con.createQuery(sql)
                     .throwOnMappingFailure(false)
                     .executeAndFetch(Endagered.class);
-
         }
 
     }
