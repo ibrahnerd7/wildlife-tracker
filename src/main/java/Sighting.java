@@ -29,11 +29,46 @@ public class Sighting {
     public static Sighting find(int id) {
         try (Connection con = DB.sql2o.open()) {
             String sql = "SELECT * FROM sightings WHERE id=:id";
-            Sighting sighting = con.createQuery(sql)
+            return con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Sighting.class);
-            return sighting;
         }
+    }
+
+    public int getWild_life_id() {
+        return wild_life_id;
+    }
+
+    public void setWild_life_id(int wild_life_id) {
+        this.wild_life_id = wild_life_id;
+    }
+
+    public String getZone() {
+        return zone;
+    }
+
+    public void setZone(String zone) {
+        this.zone = zone;
+    }
+
+    public String getRanger_name() {
+        return ranger_name;
+    }
+
+    public void setRanger_name(String ranger_name) {
+        this.ranger_name = ranger_name;
+    }
+
+    public Timestamp getTime() {
+        return time;
+    }
+
+    public void setTime(Timestamp time) {
+        this.time = time;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getWildlifeId() {
@@ -69,7 +104,6 @@ public class Sighting {
     }
 
     public void save() {
-        System.out.println(this.wild_life_id);
         try (Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO sightings (wild_life_id,zone,ranger_name,time) VALUES(:wild_life_id,:zone,:ranger_name,:time)";
             this.id = (int) con.createQuery(sql, true)
@@ -79,6 +113,9 @@ public class Sighting {
                     .addParameter("time", this.getSightingTime())
                     .executeUpdate()
                     .getKey();
+        }
+        if (this == null) {
+            throw new UnsupportedOperationException("Please enter all details!");
         }
     }
 
