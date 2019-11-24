@@ -1,7 +1,6 @@
 import interfaces.Wildlife;
 import org.sql2o.Connection;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,7 +24,6 @@ public class Animal extends Wildlife {
                     .getKey();
 
         }
-//        System.out.println(this.id);
 
     }
 

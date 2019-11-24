@@ -22,6 +22,14 @@ public class App {
 
         get("/sightings/add", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            model.put("healthy", Constants.HEALTHY);
+            model.put("ill", Constants.ILL);
+            model.put("okay", Constants.OKAY);
+
+            model.put("newborn", Constants.NEWBORN);
+            model.put("young", Constants.YOUNG);
+            model.put("adult", Constants.ADULT);
+
 
             return new ModelAndView(model, "animal-add-form.hbs");
         }, new HandlebarsTemplateEngine());
