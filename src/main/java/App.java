@@ -63,7 +63,8 @@ public class App {
             String andangeredName = request.queryParams("wildlifeName");
             String animalName = request.queryParams("animalName");
 
-            String zone = request.queryParams("location");
+            String location = request.queryParams("location");
+            String zone = request.queryParams("animalLocation");
             String endageredRangerName = request.queryParams("rangerName");
             String animalRangerName = request.queryParams("animalRangerName");
 
@@ -82,7 +83,7 @@ public class App {
                 int wildlifeId = endagered.getId();
                 endagered.save();
                 Timestamp time = new Timestamp(new Date().getTime());
-                Sighting sighting = new Sighting(wildlifeId, zone, endageredRangerName, time);
+                Sighting sighting = new Sighting(wildlifeId, location, endageredRangerName, time);
                 sighting.save();
             }
 
