@@ -22,11 +22,6 @@ A user can view rangers and cicking on them view all sightings they have done
 - Circle CI
 - Heroku
 
-## Contact Information
-
-- 📧 Email -ibrahmaina7@gmail.com
-- 📞 Phone number- +254707851734
-
 ## Contribution
 
 1. In case of any issues drop it at 
